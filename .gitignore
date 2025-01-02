@@ -1,0 +1,14 @@
+# Xcode
+*.xcuserdatad
+*.xcuserdata
+*.lock
+*.xcworkspace
+DerivedData/
+build/
+
+# Swift Package Manager
+.build/
+Package.resolved
+
+# CocoaPods
+Pods/
