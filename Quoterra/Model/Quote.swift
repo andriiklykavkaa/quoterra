@@ -42,7 +42,7 @@ extension Quote {
         dto.author = self.author
         dto.date = self.date
         dto.colorRaw = self.colorRaw
-        dto.categories = self.categories
+        dto.categories = Array(self.categories ?? [])
         return QuoteDTO()
     }
 }
@@ -53,5 +53,5 @@ struct QuoteDTO {
     var author: String?
     var date: Date?
     var colorRaw: String?
-    var categories: Set<QuoteCategory>?    
+    var categories: [QuoteCategory] = []
 }

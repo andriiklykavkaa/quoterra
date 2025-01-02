@@ -17,6 +17,7 @@ class FinderController: UIViewController {
     
     private let containerView: UIView = {
         let view = UIView()
+        view.isUserInteractionEnabled = true
         view.backgroundColor = .secondarySystemBackground
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 2
@@ -30,8 +31,8 @@ class FinderController: UIViewController {
         tableView.register(SelectCategoryCell.self, forCellReuseIdentifier: SelectCategoryCell.reuseID)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isUserInteractionEnabled = true
         tableView.rowHeight = 60
-        //tableView.bounces = false
         return tableView
     }()
     
@@ -74,6 +75,7 @@ class FinderController: UIViewController {
     
     private func setupGestures() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped(_:)))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
@@ -125,7 +127,7 @@ extension FinderController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = categories[indexPath.row]
-        print("Category \(category.title) selected.")
+        print("Category selected.")
         delegate?.didSelectCategory(category)
         dismiss(animated: true)
     }

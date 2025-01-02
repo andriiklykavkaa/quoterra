@@ -24,8 +24,11 @@ final class SelectCategoryCell: UITableViewCell {
     }
     
     private func setupUI() {
+        selectionStyle = .default
+        
         titleLabel.font = .systemFont(ofSize: 18)
         titleLabel.textAlignment = .center
+        
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(5)

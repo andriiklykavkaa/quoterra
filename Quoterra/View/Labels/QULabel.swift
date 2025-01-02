@@ -22,5 +22,6 @@ class QULabel: UILabel {
         textColor = .secondaryLabel
         font = .systemFont(ofSize: 16, weight: .regular)
         textAlignment = .left
+        numberOfLines = 1
     }
 }

@@ -87,19 +87,22 @@ extension EditorController: EditorCategoriesViewDelegate {
         view.endEditing(true)
         let destController = FinderController(
             viewModel: FinderViewModel(),
-            bannedCategories: Array(quoteDTO.categories ?? [])
+            bannedCategories: quoteDTO.categories
         )
         destController.modalPresentationStyle = .overFullScreen
         destController.modalTransitionStyle = .crossDissolve
         destController.delegate = self
         present(destController, animated: true)
     }
+    
+    func removedCategory(_ category: QuoteCategory) {
+        quoteDTO.categories.removeAll(where: { $0.id == category.id})
+    }
 }
 
 extension EditorController: FinderControllerDelegate {
     func didSelectCategory(_ category: QuoteCategory) {
-        quoteDTO.categories?.insert(category)
-        categoriesView.updateCategories(Array(quoteDTO.categories ?? []))
-        
+        quoteDTO.categories.append(category)
+        categoriesView.set(quoteDTO.categories)
     }
 }
